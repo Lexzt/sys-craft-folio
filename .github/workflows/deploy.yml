@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,6 +28,16 @@ jobs:
         with:
           enablement: enable
       - run: npm ci
+
+      # Make .env for Vite (Vite reads it at build time)
+      - name: Create .env
+        run: |
+          cat > .env << 'EOF'
+          VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          PUBLIC_URL=${{ vars.PUBLIC_URL }}
+          EOF
+
       - run: npm run build
         env:
           PUBLIC_URL: /sys-craft-folio/
