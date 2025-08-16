@@ -71,6 +71,17 @@ VITE_SUPABASE_ANON_KEY=<your-supabase-anon-key>
 
 Variables prefixed with `VITE_` are exposed to the client by Vite and can be accessed in the code via `import.meta.env`.
 
+## Database Schema
+
+The Supabase database backs the portfolio content. Key tables and fields:
+
+- **skill_categories** – required `slug` (unique) and `name`; optional `sort_order` and `is_published`.
+- **skills** – required `name`; optional `level`, `years_of_experience`, `is_featured`, `sort_order`, and `tags`.
+- **skill_category_skills** – join table mapping skills to categories (`category_id` → `skill_categories.id`, `skill_id` → `skills.id`).
+- **projects** – required `title`; optional `description`, `problem`, `approach`, `outcome`, `tech_stack`, `links`, `image_url`, `is_featured`, `is_lead`, `tags`, `metrics`, `sort_order`, and `is_published`.
+
+Skill categories and skills have a many-to-many relationship through `skill_category_skills`. Projects are stored separately and can be marked as featured for highlighted display in the UI.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/0a83e0df-f3fe-400d-86b7-1b9aa56b9572) and click on Share -> Publish.

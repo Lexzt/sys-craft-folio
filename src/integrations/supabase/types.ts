@@ -72,7 +72,10 @@ export type Database = {
         Row: {
           approach: string | null
           created_at: string
+          description: string | null
           id: string
+          image_url: string | null
+          is_featured: boolean | null
           is_lead: boolean | null
           is_published: boolean
           links: Json | null
@@ -89,7 +92,10 @@ export type Database = {
         Insert: {
           approach?: string | null
           created_at?: string
+          description?: string | null
           id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
           is_lead?: boolean | null
           is_published?: boolean
           links?: Json | null
@@ -106,7 +112,10 @@ export type Database = {
         Update: {
           approach?: string | null
           created_at?: string
+          description?: string | null
           id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
           is_lead?: boolean | null
           is_published?: boolean
           links?: Json | null
