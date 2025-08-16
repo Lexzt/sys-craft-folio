@@ -9,13 +9,14 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" },
-  ];
+    const navItems = [
+      { name: "Blog", href: "/blog" },
+      { name: "About", href: "/#about" },
+      { name: "Experience", href: "/#experience" },
+      { name: "Projects", href: "/#projects" },
+      { name: "Skills", href: "/#skills" },
+      { name: "Contact", href: "/#contact" },
+    ];
 
   const socialLinks = [
     { name: SOCIAL_LINKS.github.label, icon: Github, href: SOCIAL_LINKS.github.url },

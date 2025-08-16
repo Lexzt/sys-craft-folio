@@ -43,29 +43,34 @@ function mapCategory(row: SkillCategoryRow & { skill_category_skills: SkillCateg
   };
 }
 
+export async function fetchSkills(client = supabase): Promise<SkillCategory[]> {
+  const { data, error } = await client
+    .from("skill_categories")
+    .select(
+      "slug, name, sort_order, skill_category_skills(sort_order, skills(name, level))"
+    )
+    .eq("is_published", true)
+    .order("sort_order", { ascending: false })
+    .order("sort_order", {
+      foreignTable: "skill_category_skills",
+      ascending: false,
+    });
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+  return (
+    data?.map((row) =>
+      mapCategory(row as SkillCategoryRow & { skill_category_skills: SkillCategorySkillRow[] })
+    ) ?? []
+  );
+}
+
 export function useSkills() {
   const { data } = useQuery<SkillCategory[]>({
     queryKey: ["skills"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("skill_categories")
-        .select(
-          "slug, name, sort_order, skill_category_skills(sort_order, skills(name, level))"
-        )
-        .eq("is_published", true)
-        .order("sort_order", { ascending: false })
-        .order("sort_order", {
-          foreignTable: "skill_category_skills",
-          ascending: false,
-        });
-
-      if (error) throw error;
-      return (
-        data?.map((row) =>
-          mapCategory(row as SkillCategoryRow & { skill_category_skills: SkillCategorySkillRow[] })
-        ) ?? []
-      );
-    },
+    queryFn: () => fetchSkills(),
   });
 
   return data;
