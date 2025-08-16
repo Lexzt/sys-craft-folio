@@ -6,16 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Github, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
   Calendar,
   Send,
   CheckCircle2
 } from "lucide-react";
+import { SOCIAL_LINKS } from "@/data/socials";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,9 +59,9 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
-      value: "alex.chen@example.com",
-      href: "mailto:alex.chen@example.com"
+      label: SOCIAL_LINKS.email.label,
+      value: SOCIAL_LINKS.email.address,
+      href: SOCIAL_LINKS.email.url
     },
     {
       icon: Phone,
@@ -79,21 +80,21 @@ const Contact = () => {
   const socialLinks = [
     {
       icon: Github,
-      label: "GitHub",
-      href: "https://github.com/alexchen",
-      username: "@alexchen"
+      label: SOCIAL_LINKS.github.label,
+      href: SOCIAL_LINKS.github.url,
+      username: SOCIAL_LINKS.github.username
     },
     {
       icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/alexchen",
-      username: "in/alexchen"
+      label: SOCIAL_LINKS.linkedin.label,
+      href: SOCIAL_LINKS.linkedin.url,
+      username: SOCIAL_LINKS.linkedin.username
     },
     {
       icon: Calendar,
-      label: "Schedule a Call",
-      href: "https://calendly.com/alexchen",
-      username: "Book 30min call"
+      label: SOCIAL_LINKS.calendly.label,
+      href: SOCIAL_LINKS.calendly.url,
+      username: SOCIAL_LINKS.calendly.username
     }
   ];
 

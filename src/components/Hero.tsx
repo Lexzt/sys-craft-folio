@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download, ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import { SOCIAL_LINKS } from "@/data/socials";
 
 const Hero = () => {
   return (
@@ -101,9 +102,9 @@ const Hero = () => {
               <span className="text-sm text-muted-foreground font-medium">Connect with me:</span>
               <div className="flex gap-2">
                 {[
-                  { icon: Github, href: "https://github.com/alexchen", label: "GitHub" },
-                  { icon: Linkedin, href: "https://linkedin.com/in/alexchen", label: "LinkedIn" },
-                  { icon: Mail, href: "mailto:alex@example.com", label: "Email" }
+                  { icon: Github, href: SOCIAL_LINKS.github.url, label: SOCIAL_LINKS.github.label },
+                  { icon: Linkedin, href: SOCIAL_LINKS.linkedin.url, label: SOCIAL_LINKS.linkedin.label },
+                  { icon: Mail, href: SOCIAL_LINKS.email.url, label: SOCIAL_LINKS.email.label }
                 ].map(({ icon: Icon, href, label }) => (
                   <Button
                     key={label}
