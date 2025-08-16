@@ -59,6 +59,17 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+ 
+## Environment Variables
+
+Copy `.env.example` to `.env` and provide values for the following variables:
+
+```
+VITE_SUPABASE_URL=<your-supabase-url>
+VITE_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+```
+
+Variables prefixed with `VITE_` are exposed to the client by Vite and can be accessed in the code via `import.meta.env`.
 
 ## How can I deploy this project?
 
