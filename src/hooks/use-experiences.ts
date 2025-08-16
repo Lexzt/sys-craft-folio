@@ -37,22 +37,27 @@ function mapExperience(row: ExperienceRow): Experience {
   };
 }
 
+export async function fetchExperiences(client = supabase): Promise<Experience[]> {
+  const { data, error } = await client
+    .from("experiences")
+    .select(
+      "id, company, title, role, summary, highlights, tags, start_date, end_date, location"
+    )
+    .eq("is_published", true)
+    .order("sort_order", { ascending: false })
+    .order("start_date", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+  return data?.map(mapExperience) ?? [];
+}
+
 export function useExperiences() {
   const { data } = useQuery<Experience[]>({
     queryKey: ["experiences"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("experiences")
-        .select(
-          "id, company, title, role, summary, highlights, tags, start_date, end_date, location"
-        )
-        .eq("is_published", true)
-        .order("sort_order", { ascending: false })
-        .order("start_date", { ascending: false });
-
-      if (error) throw error;
-      return data?.map(mapExperience) ?? [];
-    },
+    queryFn: () => fetchExperiences(),
   });
 
   return data;
