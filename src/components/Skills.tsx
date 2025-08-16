@@ -1,31 +1,10 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { skills, Skill } from "@/data/portfolio";
-import { 
-  Server, 
-  Database, 
-  Cloud, 
-  Settings, 
-  GitBranch, 
-  Users,
-  Code,
-  Database as DataIcon,
-  CloudIcon,
-  Cog,
-  Activity,
-  Crown
-} from "lucide-react";
+import { useSkills, Skill } from "@/hooks/use-skills";
 
 const Skills = () => {
-  const skillCategories = [
-    { name: "Backend", icon: Server, skills: skills.filter(s => s.category === "Backend") },
-    { name: "Data", icon: DataIcon, skills: skills.filter(s => s.category === "Data") },
-    { name: "Cloud", icon: CloudIcon, skills: skills.filter(s => s.category === "Cloud") },
-    { name: "Platform/Infra", icon: Cog, skills: skills.filter(s => s.category === "Platform/Infra") },
-    { name: "DX", icon: Activity, skills: skills.filter(s => s.category === "DX") },
-    { name: "Leadership", icon: Crown, skills: skills.filter(s => s.category === "Leadership") },
-  ];
+  const skillCategories = useSkills() ?? [];
 
   const getSkillLevelColor = (level: Skill['level']) => {
     switch (level) {
