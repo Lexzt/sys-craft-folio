@@ -41,21 +41,26 @@ function mapProject(row: ProjectRow, index: number): Project {
   };
 }
 
+export async function fetchProjects(client = supabase): Promise<Project[]> {
+  const { data, error } = await client
+    .from("projects")
+    .select(
+      "id, title, subtitle, problem, approach, outcome, tech_stack, links, is_lead, sort_order"
+    )
+    .eq("is_published", true)
+    .order("sort_order", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+  return (data ?? []).map(mapProject);
+}
+
 export function useProjects() {
   const { data } = useQuery<Project[]>({
     queryKey: ["projects"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("projects")
-        .select(
-          "id, title, subtitle, problem, approach, outcome, tech_stack, links, is_lead, sort_order"
-        )
-        .eq("is_published", true)
-        .order("sort_order", { ascending: false });
-
-      if (error) throw error;
-      return (data ?? []).map(mapProject);
-    },
+    queryFn: () => fetchProjects(),
   });
 
   return data;
