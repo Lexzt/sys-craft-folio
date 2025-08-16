@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SOCIAL_LINKS } from "@/data/socials";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,9 +18,9 @@ const Header = () => {
   ];
 
   const socialLinks = [
-    { name: "GitHub", icon: Github, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
-    { name: "Email", icon: Mail, href: "mailto:contact@example.com" },
+    { name: SOCIAL_LINKS.github.label, icon: Github, href: SOCIAL_LINKS.github.url },
+    { name: SOCIAL_LINKS.linkedin.label, icon: Linkedin, href: SOCIAL_LINKS.linkedin.url },
+    { name: SOCIAL_LINKS.email.label, icon: Mail, href: SOCIAL_LINKS.email.url },
   ];
 
   return (
