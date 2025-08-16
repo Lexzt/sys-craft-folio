@@ -2,11 +2,33 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { projects } from "@/data/portfolio";
+import { useProjects } from "@/hooks/use-projects";
 import { ExternalLink, Github, Play, Crown } from "lucide-react";
 import projectImage from "@/assets/project-architecture.jpg";
 
 const Projects = () => {
+  const projects = useProjects();
+
+  if (!projects) {
+    return (
+      <section id="projects" className="py-24 bg-muted/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center">Loading projects...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (projects.length === 0) {
+    return (
+      <section id="projects" className="py-24 bg-muted/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-muted-foreground">No projects found.</p>
+        </div>
+      </section>
+    );
+  }
+
   const featuredProjects = projects.filter(project => project.featured);
 
   return (
