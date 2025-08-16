@@ -13,11 +13,12 @@ A developer portfolio built with [React](https://react.dev/), [Vite](https://vit
    ```sh
    npm install
    ```
-2. **Configure environment** – create a `.env` file with your Supabase project credentials and Formspree form ID:
+2. **Configure environment** – create a `.env` file with your Supabase project credentials, Formspree form ID and optional deployment base path:
    ```dotenv
    VITE_SUPABASE_URL=your-url
    VITE_SUPABASE_ANON_KEY=your-anon-key
    VITE_FORMSPREE_FORM_ID=your-formspree-id
+   PUBLIC_URL=/
    ```
 3. **Run the app**
    ```sh
@@ -64,7 +65,7 @@ Case studies for the portfolio.
 - `sort_order`, `is_published`, timestamps
 
 ## Deployment
-Build the project and host the contents of the `dist` folder on any static hosting service:
+Set the `PUBLIC_URL` environment variable to the path your app will be served from before building (e.g., `/repo-name/` for GitHub Pages or `/` for a custom domain), then build and host the contents of the `dist` folder on any static hosting service:
 ```sh
 npm run build
 ```
@@ -110,9 +111,13 @@ Copy `.env.example` to `.env` and provide values for the following variables:
 ```
 VITE_SUPABASE_URL=<your-supabase-url>
 VITE_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+VITE_FORMSPREE_FORM_ID=<your-formspree-id>
+PUBLIC_URL=/
 ```
 
 Variables prefixed with `VITE_` are exposed to the client by Vite and can be accessed in the code via `import.meta.env`.
+
+`PUBLIC_URL` sets the base path for the application when deployed. Use `/repo-name/` for GitHub Pages or `/` for a custom domain.
 
 ## Database Schema
 

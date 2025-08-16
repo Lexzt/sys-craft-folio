@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/sys-craft-folio/' : '/',
+  base: process.env.PUBLIC_URL || '/',
   server: {
     host: "::",
     port: 8080,
