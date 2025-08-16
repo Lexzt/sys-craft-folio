@@ -6,16 +6,18 @@ A developer portfolio built with [React](https://react.dev/), [Vite](https://vit
 - Responsive landing page with sections for hero, about, experience, projects, skills and contact.
 - Data-driven content powered by Supabase.
 - Animated UI components built with shadcn/ui and framer-motion.
+- Contact form powered by [Formspree](https://formspree.io/) for email notifications.
 
 ## Getting Started
 1. **Install dependencies**
    ```sh
    npm install
    ```
-2. **Configure environment** – create a `.env` file with your Supabase project credentials:
+2. **Configure environment** – create a `.env` file with your Supabase project credentials and Formspree form ID:
    ```dotenv
    VITE_SUPABASE_URL=your-url
    VITE_SUPABASE_ANON_KEY=your-anon-key
+   VITE_FORMSPREE_FORM_ID=your-formspree-id
    ```
 3. **Run the app**
    ```sh
