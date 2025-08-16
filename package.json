@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "git config core.hooksPath .githooks",
-    "test": "bun test"
+    "test": "bun test --env-file .env.test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
