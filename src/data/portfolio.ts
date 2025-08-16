@@ -1,15 +1,3 @@
-export interface Experience {
-  id: string;
-  company: string;
-  role: string;
-  type: 'IC' | 'Lead';
-  duration: string;
-  location: string;
-  description: string;
-  achievements: string[];
-  skills: string[];
-}
-
 export interface Project {
   id: string;
   title: string;
@@ -33,57 +21,6 @@ export interface Skill {
   category: 'Backend' | 'Data' | 'Cloud' | 'Platform/Infra' | 'DX' | 'Leadership';
   level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
 }
-
-export const experiences: Experience[] = [
-  {
-    id: "1",
-    company: "TechCorp Inc",
-    role: "Senior Software Engineer & Tech Lead",
-    type: "Lead",
-    duration: "2022 - Present",
-    location: "San Francisco, CA",
-    description: "Leading a team of 5 engineers while maintaining hands-on technical contributions to high-scale distributed systems.",
-    achievements: [
-      "Reduced P99 latency by 40% through database optimization and caching strategies",
-      "Led migration to microservices architecture, improving system reliability by 99.9%",
-      "Mentored 3 junior engineers, with 2 receiving promotions within 12 months",
-      "Cut infrastructure costs by 30% through containerization and auto-scaling implementation"
-    ],
-    skills: ["Java", "Spring Boot", "Kubernetes", "PostgreSQL", "Redis", "Team Leadership"]
-  },
-  {
-    id: "2",
-    company: "StartupXYZ",
-    role: "Software Engineer",
-    type: "IC",
-    duration: "2020 - 2022",
-    location: "Austin, TX",
-    description: "Full-stack development focused on building scalable web applications and APIs.",
-    achievements: [
-      "Built real-time analytics dashboard handling 1M+ daily events",
-      "Increased API throughput by 60% through async processing and connection pooling",
-      "Implemented CI/CD pipeline reducing deployment time from 2 hours to 15 minutes",
-      "Decreased bug reports by 45% through comprehensive testing strategy"
-    ],
-    skills: ["Node.js", "React", "TypeScript", "MongoDB", "AWS", "Docker"]
-  },
-  {
-    id: "3",
-    company: "DevSolutions Ltd",
-    role: "Junior Software Developer",
-    type: "IC",
-    duration: "2019 - 2020",
-    location: "Remote",
-    description: "Frontend and backend development with focus on learning modern development practices.",
-    achievements: [
-      "Delivered 15+ features for e-commerce platform serving 10k+ users",
-      "Improved page load times by 35% through code optimization and lazy loading",
-      "Contributed to open-source projects with 500+ GitHub stars",
-      "Achieved 95% test coverage across all modules"
-    ],
-    skills: ["JavaScript", "Vue.js", "Python", "Flask", "MySQL", "Git"]
-  }
-];
 
 export const projects: Project[] = [
   {

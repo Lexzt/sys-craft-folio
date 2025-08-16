@@ -1,10 +1,32 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { experiences } from "@/data/portfolio";
 import { MapPin, Calendar, Users, Code } from "lucide-react";
+import { useExperiences } from "@/hooks/use-experiences";
 
 const Experience = () => {
+  const experiences = useExperiences();
+
+  if (!experiences) {
+    return (
+      <section id="experience" className="py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <p>Loading...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (experiences.length === 0) {
+    return (
+      <section id="experience" className="py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <p>No experiences found.</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="experience" className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
