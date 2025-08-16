@@ -36,6 +36,16 @@ npm i
 npm run dev
 ```
 
+## Linting
+
+To maintain code quality, lint the repository with:
+
+```sh
+npm run lint
+```
+
+Linting also runs automatically before commits via a Git pre-commit hook and on pushes and pull requests targeting the `master` branch via GitHub Actions.
+
 **Edit a file directly in GitHub**
 
 - Navigate to the desired file(s).
